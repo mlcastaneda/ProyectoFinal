@@ -19,10 +19,10 @@
         padding-top: 70px;
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
-    </style>  
+    </style>
+</head>
 
 <body>
-  <form action="modifyJ.php" method="post">
   <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -40,31 +40,24 @@
         </ul>
       </div>
     </div>
-  </nav>
-  <h1 class="text-center">Modificar</h1><hr>
-
-  <div class="panel panel-default col-sm-7">
-    <div class="panel-heading">
-      <h3>Jornadas</h3>
-    </div>
-  <div class="panel-body"> 
+  </nav><br>
 
 <?php
-      $CodigoJ = $_GET['CodigoJ'];
-      $NombreJ = $_GET['NombreJ'];
+$CodigoJ = $_POST['CodigoJ'];
+$NombreJ = $_POST['NombreJ'];
 
-       echo "<b>Codigo de Jornada: </b>$CodigoJ<br>\n";
-       echo "<input type=hidden name=CodigoJ value=$CodigoJ>\n";
-       echo "<b>Nombre de Cuenta:</b>\n";
-       echo "<input type=text name=NombreJ value=$NombreJ ><br>\n";
+$link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
+
+$query = "UPDATE Jornada SET NombreJ='$NombreJ' WHERE CodigoJ=$CodigoJ";
+$result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
+echo "El registro ha sido modificado exitosamente<br>";
+
+mysqli_close($link);
+
 ?>
-
-       <input type="submit" name="submit" value="enviar">
-     </form>
      <center>
-         <a href="list.php">regresar</a>
-     </center>  
-     </div>
-     </div>
-</body>
+         <a href="mantenimiento.php">regresar</a>
+     </center>
+
+  </body>
 </html>

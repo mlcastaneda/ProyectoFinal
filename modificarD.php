@@ -22,7 +22,7 @@
     </style>  
 
 <body>
-  <form action="modifyC.php" method="post">
+  <form action="modifyD.php" method="post">
   <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -45,7 +45,7 @@
 
   <div class="panel panel-default col-sm-7">
     <div class="panel-heading">
-      <h3>Jornadas</h3>
+      <h3>Departamentos</h3>
     </div>
   <div class="panel-body"> 
 
@@ -62,7 +62,7 @@
        <input type="submit" name="submit" value="enviar">
      </form>
      <center>
-         <a href="list.php">regresar</a>
+         <a href="mantenimiento.php">regresar</a>
      </center>  
      </div>
      </div>
