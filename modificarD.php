@@ -1,4 +1,4 @@
-</!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -19,10 +19,11 @@
         padding-top: 70px;
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
-    </style>
-</head>
+    </style>  
+
 <body>
-    <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+  <form action="modifyC.php" method="post">
+  <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
@@ -32,31 +33,38 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="index.html">Main Menu</a>
-    </nav>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="nav navbar-nav">
+        </ul>
+      </div>
     </div>
+  </nav>
+  <h1 class="text-center">Modificar</h1><hr>
+
+  <div class="panel panel-default col-sm-7">
+    <div class="panel-heading">
+      <h3>Jornadas</h3>
+    </div>
+  <div class="panel-body"> 
 
 <?php
-$codigoE = $_POST["CodigoE"];
-$nombreE = $_POST["NombreE"];
-$codigoD = $_POST["CodigoD"];
-$nombreJ = $_POST["NombreJ"];
+      $CodigoD = $_GET['CodigoD'];
+      $NombreD = $_GET['NombreD'];
 
-
-$link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
-
-$query = "INSERT INTO empleado VALUES ($codigoE, '$nombreE', $codigoD, '$nombreJ')";
-
-$result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
-echo '         El registro fue insertado exitosamente<br>';
-
-
-mysqli_close($link);
-
+       echo "<b>Codigo de Departamento: </b>$CodigoD<br>\n";
+       echo "<input type=hidden name=CodigoD value=$CodigoD>\n";
+       echo "<b>Nombre de Cuenta:</b>\n";
+       echo "<input type=text name=NombreD value=$NombreD ><br>\n";
 ?>
-    <div class="container">
+
+       <input type="submit" name="submit" value="enviar">
+     </form>
      <center>
-         <a href="index.html">Regresar</a>
-     </center>
-    </div>
-  </body>
+         <a href="list.php">regresar</a>
+     </center>  
+     </div>
+     </div>
+</body>
 </html>

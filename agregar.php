@@ -102,37 +102,35 @@
       </select><br><br>
 
         <label class="col-sm-2 control-label" for="formGroupInputSmall">Departamento </label>  
-        <td>
-        <?php
 
-                $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
+      <?php
 
-
-                $query = "select * from Departamento order by CodigoD";
-                $result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
-
-                $CodigoD=0;
-                $NombreD="";
-
-                echo "<select name='CodigoD' class=\"form control\">\n";
-
-                while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-
-                   $CodigoD=$line["CodigoD"];
-                   $NombreD=$line["NombreD"];
-
-                   echo "<option value=\"$CodigoD\">   $NombreD  </option>";
-                }
-                echo "</select>\n";
-
-                mysqli_close($link);
+        $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
 
 
-                ?>
-                </td>
+        $query = "select * from departamento order by codigoD";
+        $result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
+
+          $CodigoD=0;
+          $NombreD="";
+
+          echo "<select name='CodigoD' class=\"form control\">\n";
+
+          while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+
+            $CodigoD=$line["CodigoD"];
+            $NombreD=$line["NombreD"];
+            echo "<option value=\"$CodigoD\">$NombreD</option>";
+          }
+          echo "</select>\n";
+
+        mysqli_close($link);
+
+
+      ?>
 
         <div>
-        <button type="submit" class="btn bt-right btn-primary btn-lg" value="crearC"> Crear Departamento</button>
+        <button type="submit" class="btn bt-right btn-primary btn-lg" value="crearC"> Crear Empleado</button>
         </div>
     </form>
    </div>

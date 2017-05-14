@@ -1,4 +1,4 @@
-</!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -20,7 +20,6 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
-</head>
 <body>
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -36,21 +35,25 @@
     </div>
 
 <?php
-$codigoE = $_POST["CodigoE"];
-$nombreE = $_POST["NombreE"];
-$codigoD = $_POST["CodigoD"];
-$nombreJ = $_POST["NombreJ"];
+  $CodigoJ = $_GET['CodigoJ'];
 
+  $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
 
-$link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
+  $query = "SELECT CodigoJ From Jornada Where CodigoJ = $CodigoJ";
+  $result = mysqli_query($link, $query) or die ('Query failed: ' . mysqli_error($link));
+  $FLAG = true;
 
-$query = "INSERT INTO empleado VALUES ($codigoE, '$nombreE', $codigoD, '$nombreJ')";
+  while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+    echo "No se puede eliminar porque esta siendo utilizada.  ";
+    $FLAG = false;
+  }
 
-$result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
-echo '         El registro fue insertado exitosamente<br>';
-
-
-mysqli_close($link);
+  if($FLAG) {
+    $query1 = "DELETE FROM Jornada WHERE CodigoJ=$CodigoJ";
+    $result1 =mysqli_query($link, $query1) or die('Query failed: ' . mysqli_error($link));
+    echo 'El resultado ha sido eliminado exitosamente';
+  }
+  mysqli_close($link);
 
 ?>
     <div class="container">
