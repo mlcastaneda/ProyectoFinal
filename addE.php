@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Proyecto # 1</title>
+    <title>Proyecto Final</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,6 @@ $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not conne
 
 $query = "INSERT INTO Empleado VALUES ($codigoE, '$nombreE', $codigoD, '$nombreJ')";
 
-echo $query;
 $result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
 echo '         El registro fue insertado exitosamente<br>';
 

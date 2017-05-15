@@ -20,7 +20,6 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
-</head>
 <body>
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -34,28 +33,55 @@
         <a class="navbar-brand" href="index.html">Main Menu</a>
     </nav>
     </div>
+  <h1 class="text-center">Tablas</h1><hr>
+
+
+  <div class="panel panel-default col-sm-7">
+    <div class="panel-heading">
+    </div>
+  <div class="panel-body"> 
 
 <?php
 
-$FechaP = $_POST["FechaP"];
-$CodigoE = $_POST["CodigoE"];
-$Motivo = $_POST["Motivo"];
-
-
 $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
 
-$query = "INSERT INTO Permiso VALUES ('$FechaP', '$Motivo', $CodigoE)";
+$query = "select * from empleado order by CodigoE";
+$result = mysqli_query($link, $query) or die('Query failed: ' . mysql_error($link));
 
-$result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
-echo '         El registro fue insertado exitosamente<br>';
+$CodigoD=0;
+$NombreD="";
+
+echo "<table class=\"table\">\n";
+echo "\t<tr>\n";
+echo "\t\t<th><b>Codigo de empleado</b></th>\n";
+echo "\t\t<th>Nombre de empleado</th>\n";
+echo "\t\t<th>Codigo de departamento</th>\n";
+echo "\t\t<th>Nombre de jornada</th>\n";
+echo '<th></th>';
+echo '<th></th>';
+echo "\t</tr>\n";
+
+while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+
+   $CodigoE=$line["codigoE"];
+   $NombreE=$line["nombreE"];
+   $CodigoD=$line["codigoD"];
+   $NombreJ=$line["nombreJ"];
+
+   echo "\t<tr>\n";
+   echo "\t\t<td>$CodigoE</td>\n";
+   echo "\t\t<td>$NombreE</td>\n";
+   echo "\t\t<td>$CodigoD</td>\n";
+   echo "\t\t<td>$NombreJ</td>\n";
+
+   echo "\t\t<td><a href=report.php?CodigoE=$CodigoE&NombreE=$NombreE&CodigoD=$CodigoD&NombreJ=$NombreJ>Reporte de empleado</a></td>\n";
+   echo "\t</tr>\n";
+}
+echo "</table>\n";
 
 mysqli_close($link);
 
 ?>
-    <div class="container">
-     <center>
-         <a href="index.html">Regresar</a>
-     </center>
-    </div>
+
   </body>
-</html>
+  </html>

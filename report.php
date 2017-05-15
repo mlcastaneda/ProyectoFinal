@@ -45,7 +45,7 @@
 
   <div class="panel panel-default col-sm-7">
     <div class="panel-heading">
-      <h3>Jornadas</h3>
+      <h3>Reportes</h3>
     </div>
   <div class="panel-body"> 
 
@@ -56,14 +56,57 @@
      $CodigoD=$_GET["CodigoD"];
      $NombreJ=$_GET["NombreJ"];
 
+       echo "<b>Nombre de empleado: </b>$NombreE<br>\n";
+       echo "<input type=hidden name=NombreE value=$NombreE>\n";
        echo "<b>Codigo de Empleado: </b>$CodigoE<br>\n";
-       echo "<input type=hidden name=CodigoE value=$CodigoE>\n";
-       echo "<b>Nombre de Empleado:</b>\n";
-       echo "<input type=text name=NombreE value=$NombreE ><br>\n";
        echo "<b>Codigo de Departamento: </b>$CodigoD<br>\n";
        echo "<input type=hidden name=CodigoD value=$CodigoD>\n";
        echo "<b>Nombre de Jornada: </b>$NombreJ<br>\n";
-       echo "<input type=hidden name=NombreJ value=$NombreJ>\n";       
+       echo "<input type=hidden name=NombreJ value=$NombreJ>\n\n"; 
+
+    $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
+
+    $query = "select * from empleado order by CodigoE";
+    $query2 = "select * from marcas";    
+    $result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
+    $result2 = mysqli_query($link, $query2) or die('Query failed: ' . mysqli_error($link));
+
+    $CodigoD=0;
+    $NombreD="";
+
+    echo "<table class=\"table\">\n";
+    echo "\t<tr>\n";
+    echo "\t\t<th><b>Fecha</b></th>\n";
+    echo "\t\t<th>Entrada</th>\n";
+    echo "\t\t<th>Salida</th>\n";
+    echo "\t\t<th>Entrada tarde minutos</th>\n";
+    echo "\t\t<th>Salida temprano minutos</th>\n"; 
+    echo "\t\t<th>Horas Trabajadas</th>\n";   
+    echo "\t\t<th>Observaciones/Permisos</th>\n";
+    echo '<th></th>';
+    echo '<th></th>';
+    echo "\t</tr>\n";
+
+    while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+
+       $CodigoE=$line["codigoE"];
+       $NombreE=$line["nombreE"];
+       $CodigoD=$line["codigoD"];
+       $NombreJ=$line["nombreJ"];
+       //$FechaMarca=$line["FechaMarca"];
+
+       echo "\t<tr>\n";
+       echo "\t\t<td>$NombreE</td>\n";
+       echo "\t\t<td>$CodigoD</td>\n";
+       echo "\t\t<td>$NombreJ</td>\n";
+
+       echo "\t\t<td><a href=eliminarE.php?CodigoE=$CodigoE>Eliminar</a></td>\n";
+       echo "\t\t<td><a href=modificarE.php?&CodigoE=$CodigoE&NombreE=$NombreE&CodigoD=$CodigoD&NombreJ=$NombreJ>Modificar</a></td>\n";
+       echo "\t</tr>\n";
+  }
+    echo "</table>\n";
+
+    mysqli_close($link);    
 ?>
 
        <input type="submit" name="submit" value="enviar">

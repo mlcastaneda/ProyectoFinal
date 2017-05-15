@@ -96,9 +96,9 @@
       <INPUT type="text" name="NombreE"><br><br>
       <label class="col-sm-2 control-label" for="formGroupInputSmall">Jornada </label>
       <select class="form-horizontal" name="NombreJ" >
-        <option value="D">Diurna</option>
-        <option value="M">Matutina</option>
-        <option value="V">Vespertina</option>
+        <option value="Diurna">Diurna</option>
+        <option value="Matutina">Matutina</option>
+        <option value="Vespertina">Vespertina</option>
       </select><br><br>
       <div>
       </div>
