@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Proyecto Final</title>
+    <title>Proyecto # 1</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     </style>  
 
 <body>
-  <form action="modifyD.php" method="post">
+  <form action="modifyE.php" method="post">
   <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -45,18 +45,25 @@
 
   <div class="panel panel-default col-sm-7">
     <div class="panel-heading">
-      <h3>Departamentos</h3>
+      <h3>Jornadas</h3>
     </div>
   <div class="panel-body"> 
 
 <?php
-      $CodigoD = $_GET['CodigoD'];
-      $NombreD = $_GET['NombreD'];
 
+     $CodigoE=$_GET["CodigoE"];
+     $NombreE=$_GET["NombreE"];
+     $CodigoD=$_GET["CodigoD"];
+     $NombreJ=$_GET["NombreJ"];
+
+       echo "<b>Codigo de Empleado: </b>$CodigoE<br>\n";
+       echo "<input type=hidden name=CodigoE value=$CodigoE>\n";
+       echo "<b>Nombre de Empleado:</b>\n";
+       echo "<input type=text name=NombreE value=$NombreE ><br>\n";
        echo "<b>Codigo de Departamento: </b>$CodigoD<br>\n";
        echo "<input type=hidden name=CodigoD value=$CodigoD>\n";
-       echo "<b>Nombre de Departamento:</b>\n";
-       echo "<input type=text name=NombreD value=$NombreD ><br>\n";
+       echo "<b>Nombre de Jornada: </b>$NombreJ<br>\n";
+       echo "<input type=hidden name=NombreJ value=$NombreJ>\n";       
 ?>
 
        <input type="submit" name="submit" value="enviar">

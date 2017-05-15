@@ -55,14 +55,14 @@
 
        echo "<b>Codigo de Jornada: </b>$CodigoJ<br>\n";
        echo "<input type=hidden name=CodigoJ value=$CodigoJ>\n";
-       echo "<b>Nombre de Cuenta:</b>\n";
+       echo "<b>Nombre de Jornada:</b>\n";
        echo "<input type=text name=NombreJ value=$NombreJ ><br>\n";
 ?>
 
        <input type="submit" name="submit" value="enviar">
      </form>
      <center>
-         <a href="list.php">regresar</a>
+         <a href="mantenimiento.php">regresar</a>
      </center>  
      </div>
      </div>

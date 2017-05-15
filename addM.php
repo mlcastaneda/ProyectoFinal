@@ -1,4 +1,4 @@
-</!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Proyecto Final</title>
+    <title>Proyecto # 1</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
         /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
     }
     </style>
-  </head>
+</head>
 <body>
     <nav id="myNavbar" class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
@@ -32,37 +32,32 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="index.html">Main Menu</a>
-    </div>
-    </div>
     </nav>
-
-    <div class="container">
-
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>Agregar</h1>
-                <hr>
-            </div>
-        </div>
     </div>
-    <div class="container">
-    <h2> Permisos </h2>
 
-    <form action="addP.php" method="POST">
-    <div class="form-inline">
-      <label class="col-sm-2 control-label" for="formGroupInputSmall">Fecha de permiso </label>
-      <INPUT id="FechaP"  type="date" name="FechaP"><br><br>
-      <label class="col-sm-2 control-label" for="formGroupInputSmall">Codigo de empleado</label>
-      <INPUT onkeypress="return isNumberKey(event)" type="text" name="CodigoE"><br><br>
-        <label class="col-sm-2 control-label" for="formGroupInputSmall">Motivo de falta</label>
-        <textarea rows="4" cols="50" name="Motivo">
-        </textarea>
-        <div>
-        <button type="submit" class="btn bt-right btn-primary btn-lg" value="crearC"> Crear jornada</button>
-        </div>
-      </div>
-      </form>
-  <br>
-  </hr>
+<?php
+
+$CodigoE = $_POST["CodigoE"];
+$TipoMarca = $_POST["TipoMarca"];
+$FechaMarca = $_POST["FechaMarca"];
+$HoraMarca = $_POST["HoraMarca"];
+
+$link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
+
+//mysqli_select_db('contabilidad') or die('Could not select database');
+
+$query = "INSERT INTO Marcas VALUES ($CodigoE, '$TipoMarca','$FechaMarca', '$HoraMarca')";
+
+$result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
+echo '         El registro fue insertado exitosamente<br>';
+
+mysqli_close($link);
+
+?>
+    <div class="container">
+     <center>
+         <a href="index.html">Regresar</a>
+     </center>
+    </div>
   </body>
-  </html>>
+</html>

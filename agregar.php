@@ -54,9 +54,9 @@
       <INPUT onkeypress="return isNumberKey(event)" type="text" name="CodigoJ"><br><br>
       <label class="col-sm-2 control-label" for="formGroupInputSmall">Nombre de Jornada </label>
       <select class="form-horizontal" name="NombreJ" >
-        <option value="D">Diurna</option>
-        <option value="M">Matutina</option>
-        <option value="V">Vespertina</option>
+        <option value="Diurna">Diurna</option>
+        <option value="Matutina">Matutina</option>
+        <option value="Vespertina">Vespertina</option>
       </select><br><br>
         <label>Hora de entrada</label>
         <INPUT onkeypress="return isNumberKey(event)" type="time" name="HoraEntrada">

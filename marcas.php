@@ -40,22 +40,29 @@
 
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>Agregar</h1>
+                <h1>Agregar Marcas</h1>
                 <hr>
             </div>
         </div>
     </div>
     <div class="container">
-    <h2> Permisos </h2>
+    <h2> Marcas </h2>
 
-    <form action="addP.php" method="POST">
+    <form action="addM.php" method="POST">
     <div class="form-inline">
-      <label class="col-sm-2 control-label" for="formGroupInputSmall">Fecha de permiso </label>
-      <INPUT id="FechaP"  type="date" name="FechaP"><br><br>
       <label class="col-sm-2 control-label" for="formGroupInputSmall">Codigo de empleado</label>
       <INPUT onkeypress="return isNumberKey(event)" type="text" name="CodigoE"><br><br>
-        <label class="col-sm-2 control-label" for="formGroupInputSmall">Motivo de falta</label>
-        <textarea rows="4" cols="50" name="Motivo">
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Tipo de Marca</label>
+
+        <form action="" method="post">
+          <input type="radio" name="TipoMarca" value="Entrada" /> Entrada
+          <input type="radio" name="TipoMarca" value="Salida" /> Salida
+        </form><br><br>
+
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Fecha de Marca</label>
+        <INPUT id="FechaP"  type="date" name="FechaMarca"><br><br>
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Hora de Marca</label>
+        <INPUT onkeypress="return isNumberKey(event)" type="time" name="HoraMarca"><br><br>
         </textarea>
         <div>
         <button type="submit" class="btn bt-right btn-primary btn-lg" value="crearC"> Crear jornada</button>
