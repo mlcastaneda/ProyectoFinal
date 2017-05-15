@@ -100,6 +100,10 @@
         <option value="Matutina">Matutina</option>
         <option value="Vespertina">Vespertina</option>
       </select><br><br>
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Hora de entrada</label>
+        <INPUT onkeypress="return isNumberKey(event)" type="time" name="HoraEntrada">
+        <label >Hora de salida</label>
+        <INPUT onkeypress="return isNumberKey(event)" type="time" name="HoraSalida"><br><br>        
       <div>
       </div>
               <label class="col-sm-2 control-label" for="formGroupInputSmall">Departamento </label>  

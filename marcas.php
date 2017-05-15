@@ -59,9 +59,9 @@
           <input type="radio" name="TipoMarca" value="Salida" /> Salida
         </form><br><br>
 
-        <label class="col-sm-2 control-label" for="formGroupInputSmall">Fecha de Marca</label>
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Ingrese fecha actual</label>
         <INPUT id="FechaP"  type="date" name="FechaMarca"><br><br>
-        <label class="col-sm-2 control-label" for="formGroupInputSmall">Hora de Marca</label>
+        <label class="col-sm-2 control-label" for="formGroupInputSmall">Ingrese la hora actual</label>
         <INPUT onkeypress="return isNumberKey(event)" type="time" name="HoraMarca"><br><br>
         </textarea>
         <div>

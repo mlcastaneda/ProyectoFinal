@@ -40,11 +40,13 @@ $codigoE = $_POST["CodigoE"];
 $nombreE = $_POST["NombreE"];
 $codigoD = $_POST["CodigoD"];
 $nombreJ = $_POST["NombreJ"];
+$horaEntrada = $_POST["HoraEntrada"];
+$horaSalida = $_POST["HoraSalida"];
 
 
 $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
 
-$query = "INSERT INTO Empleado VALUES ($codigoE, '$nombreE', $codigoD, '$nombreJ')";
+$query = "INSERT INTO Empleado VALUES ($codigoE, '$nombreE', $codigoD, '$nombreJ', '$horaEntrada', '$horaSalida')";
 
 $result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
 echo '         El registro fue insertado exitosamente<br>';

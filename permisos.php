@@ -58,7 +58,7 @@
         <textarea rows="4" cols="50" name="Motivo">
         </textarea>
         <div>
-        <button type="submit" class="btn bt-right btn-primary btn-lg" value="crearC"> Crear jornada</button>
+        <button type="submit" class="btn bt-right btn-primary btn-lg" value="crearC"> Crear permiso</button>
         </div>
       </div>
       </form>

@@ -45,8 +45,8 @@
 
 $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
 
-$query = "select * from empleado order by CodigoE";
-$result = mysqli_query($link, $query) or die('Query failed: ' . mysql_error($link));
+$query = "select E.codigoE, E.nombreE, E.codigoD, E.nombreJ, E.horaEntrada, E.horaSalida, M.fechaMarca from empleado E, Marcas M where E.CodigoE=M.CodigoE";
+$result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
 
 $CodigoD=0;
 $NombreD="";
@@ -67,6 +67,9 @@ while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
    $NombreE=$line["nombreE"];
    $CodigoD=$line["codigoD"];
    $NombreJ=$line["nombreJ"];
+   $HoraEntrada = $line["horaEntrada"];
+   $HoraSalida = $line["horaSalida"];
+   $fechaMarca =$line["fechaMarca"];
 
    echo "\t<tr>\n";
    echo "\t\t<td>$CodigoE</td>\n";
@@ -74,7 +77,7 @@ while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
    echo "\t\t<td>$CodigoD</td>\n";
    echo "\t\t<td>$NombreJ</td>\n";
 
-   echo "\t\t<td><a href=report.php?CodigoE=$CodigoE&NombreE=$NombreE&CodigoD=$CodigoD&NombreJ=$NombreJ>Reporte de empleado</a></td>\n";
+   echo "\t\t<td><a href=report.php?CodigoE=$CodigoE&fechaMarca=$fechaMarca&NombreE=$NombreE&CodigoD=$CodigoD&NombreJ=$NombreJ&HoraEntrada=$HoraEntrada&HoraSalida=$HoraSalida>Reporte de empleado</a></td>\n";
    echo "\t</tr>\n";
 }
 echo "</table>\n";
