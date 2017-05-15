@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Proyecto # 1</title>
+    <title>Proyecto Final</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -100,35 +100,36 @@
         <option value="M">Matutina</option>
         <option value="V">Vespertina</option>
       </select><br><br>
+      <div>
+      </div>
+              <label class="col-sm-2 control-label" for="formGroupInputSmall">Departamento </label>  
+<div>
+    <?php
 
-        <label class="col-sm-2 control-label" for="formGroupInputSmall">Departamento </label>  
-
-      <?php
-
-        $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
-
-
-        $query = "select * from departamento order by codigoD";
-        $result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
-
-          $CodigoD=0;
-          $NombreD="";
-
-          echo "<select name='CodigoD' class=\"form control\">\n";
-
-          while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-
-            $CodigoD=$line["CodigoD"];
-            $NombreD=$line["NombreD"];
-            echo "<option value=\"$CodigoD\">$NombreD</option>";
-          }
-          echo "</select>\n";
-
-        mysqli_close($link);
+      $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
 
 
-      ?>
+      $query = "select * from departamento order by codigoD";
+      $result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
 
+        $NombreD="";
+
+        echo "<select name='CodigoD' class=\"form control\">\n";
+        //$CodigoD=0;
+
+        while ($line = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+
+        $CodigoD=$line["codigoD"];
+        $NombreD=$line["NombreD"];
+        echo "<option value=\"$CodigoD\">$NombreD</option>";
+        }
+
+        echo "</select>\n";
+
+      mysqli_close($link);
+
+    ?>
+</div>
         <div>
         <button type="submit" class="btn bt-right btn-primary btn-lg" value="crearC"> Crear Empleado</button>
         </div>

@@ -44,15 +44,17 @@ $nombreJ = $_POST["NombreJ"];
 
 $link = mysqli_connect('localhost', 'root', '', 'final') or die('Could not connect: ' . mysqli_error($link));
 
-$query = "INSERT INTO empleado VALUES ($codigoE, '$nombreE', $codigoD, '$nombreJ')";
+$query = "INSERT INTO Empleado VALUES ($codigoE, '$nombreE', $codigoD, '$nombreJ')";
 
+echo $query;
 $result = mysqli_query($link, $query) or die('Query failed: ' . mysqli_error($link));
 echo '         El registro fue insertado exitosamente<br>';
-
 
 mysqli_close($link);
 
 ?>
+
+
     <div class="container">
      <center>
          <a href="index.html">Regresar</a>
